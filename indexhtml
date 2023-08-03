@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>07e2-Calculator</title>
+    <title>Calculator</title>
     <style>
       .zero {
         /* margin-left: 30px; */
