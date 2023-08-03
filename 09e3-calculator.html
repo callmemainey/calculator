@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>07e2-Calculator</title>
+    <style>
+      .zero {
+        /* margin-left: 30px; */
+        padding: 1px 21px;
+      }
+
+      .clear {
+        padding: 1px 30px;
+      }
+
+      .calc-container {
+        border: solid;
+        border-radius: 5px;
+        width: 120px;
+        padding-left: 15px;
+        padding-bottom: 15px;
+      }
+
+      .js-calculation-result {
+        font-size: 1.25rem;
+        border: solid;
+        border-radius: 5px;
+        width: 100px;
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+  <div class="calc-container">
+    <p class="js-calculation-result"></p>
+
+    <button class="clear" onclick="cleared();">AC</button>
+    <button onclick="updateCalculator(' / ');">/</button>
+
+    <br />
+    <br />
+
+    <button onclick="updateCalculator('1');">1</button>
+    <button onclick="updateCalculator('2');">2</button>
+    <button onclick="updateCalculator('3');">3</button>
+    <button onclick="updateCalculator(' + ');">+</button>
+
+    <br />
+    <br />
+
+    <button onclick="updateCalculator('4');">4</button>
+    <button onclick="updateCalculator('5');">5</button>
+    <button onclick="updateCalculator('6');">6</button>
+    <button onclick="updateCalculator(' - ');">-</button>
+
+    <br />
+    <br />
+
+    <button onclick="updateCalculator('7');">7</button>
+    <button onclick="updateCalculator('8');">8</button>
+    <button onclick="updateCalculator('9')">9</button>
+    <button onclick="updateCalculator(' * ');">x</button>
+
+    <br />
+    <br />
+
+    <button class="zero" onclick="updateCalculator('0');">0</button>
+    <button onclick="updateCalculator('.');">.</button>
+    <button onclick="equals();">=</button>
+  </div>
+
+    <script>
+      
+      let calculation = localStorage.getItem('calculation') || '';
+      document.querySelector('.js-calculation-result')
+            .innerHTML = 0;
+
+      function updateCalculator(value) {        
+          calculation += value;
+          document.querySelector('.js-calculation-result')
+            .innerHTML = calculation;
+          console.log(calculation);
+        } 
+
+      function equals() {
+        calculation = eval(calculation);
+        document.querySelector('.js-calculation-result')
+            .innerHTML = calculation;
+        console.log(calculation);
+        localStorage.setItem('calculation', calculation);
+      };
+
+      function cleared() {
+        calculation = '';
+        document.querySelector('.js-calculation-result')
+            .innerHTML = 0;
+        console.log('Cleared!');
+        localStorage.setItem('calculation', calculation);
+      };
+    </script>
+  </body>
+</html>
